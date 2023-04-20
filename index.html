@@ -1,15 +1,10 @@
 <!DOCTYPE html>
 <html>
   <head>
-		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script type="text/javascript" src="app.js"></script>
-		<link rel="stylesheet" href="app.css" type="text/css" />
-
-    <title> At first glance </title>
+    <title>Book Front Page</title>
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
   <body>
-
     <div id="book-container">
       <div id="book-page"></div>
       <div id="button-container">
@@ -17,7 +12,208 @@
         <button id="next-button">Next Book</button>
       </div>
     </div>
+    
+    <style>
 
-    <script src="script.js"></script>
+#book-container {
+   
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 18px;
+  color: #1d1d1f;
+}
+
+h1 {
+  font-weight: bold;
+  color: #0069d9;
+  font-size: 26px;
+}
+
+
+#book-page {
+  
+  border: 0px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+#button-container {
+  text-align: center;
+}
+
+button {
+  	margin: 6px 10px;
+	padding: 10px 20px;
+	border-radius: 5px;
+	background-color: #2ecc71;
+	color: white;
+	font-size: 18px;
+	border: none;
+	cursor: pointer; 
+	/*font-family: 'Veranda', serif;*/
+}
+
+button:focus {
+  outline: none;
+}
+button:hover {
+  background-color: #0069d9;
+  outline: none; }
+
+ a:link { color: red;}
+a:hover {  color:  #2ecc71;}
+
+</style>
+    <script> 
+    
+    
+    window.onload = function() {
+  var bookPage = document.getElementById("book-page");
+  var revealButton = document.getElementById("reveal-button");
+  var nextButton = document.getElementById("next-button");
+
+  var books = [
+    
+{
+title: "A Deadly Education",
+author: “Naomi Novik”,
+link: "https://www.penguin.com.au/books/a-deadly-education-9781529100877",
+blurb: “From the leading talent in fantasy, a magical coming-of-age trilogy with a female anti-hero.”,
+firstPage: "<p>I decided that Orion needed to die after the second time he saved my life. I hadn&rsquo;t really cared much about him before then one way or another, but I had limits. It would&rsquo;ve been all right if he&rsquo;d saved my life some really extraordinary number of times, ten or thirteen or so&mdash;thirteen is a number with distinction. Orion Lake, my personal bodyguard; I could have lived with that. But we&rsquo;d been in the Scholomance almost three years by then, and he hadn&rsquo;t shown any previous inclination to single me out for special treatment.<br>
+Selfish of me, you&rsquo;ll say, to be contemplating with murderous intent the hero responsible for the continued survival of a quarter of our class. Well, too bad for the losers who couldn&rsquo;t stay afloat without his help. We&rsquo;re not&#160;meant&#160;to all survive, anyway. The school has to be fed somehow.</p>"
+},
+
+{ 
+title: "A Gentleman in Moscow",
+author: “Amor Towles”,
+link: "https://www.penguin.com.au/books/a-deadly-education-9781529100877",
+blurb: “a transporting novel about a man who is ordered to spend the rest of his life inside a luxury hotel - soon to be a major TV series starring Ewan McGregor.”,
+“<p>Alongside the stacks of S&egrave;vres plates bearing the hotel&rsquo;s insignia were samovars that stood two feet tall and soup tureens that looked like the goblets of the gods. There were coffeepots and gravy boats. There was an assortment of utensils, each of which had been designed with the greatest care to serve a single culinary purpose. From among them, Nina picked up what looked like a delicate spade with a plunger and an ivory handle. Depressing the lever, Nina watched as the two opposing blades opened and shut, then she looked to the Count in wonder.<br>
+&ldquo;An asparagus server,&rdquo; he explained.<br>
+&ldquo;Does a banquet really need an asparagus server?&rdquo;<br>
+&ldquo;Does an orchestra need a bassoon?&rdquo;<br>
+As Nina returned it gently to the shelf, the Count wondered how many times he had been served by that implement? How many times had he eaten off these plates? The bicentennial of St. Petersburg had been celebrated in the Metropol&rsquo;s ballroom, as had the centennial of Pushkin&rsquo;s birth and the annual dinner of the Backgammon Club. And then there were the more intimate gatherings that took place in the two private dining rooms adjacent to the Boyarsky: the Yellow and Red Rooms. In their heyday, these retreats were so conducive to frank expressions of sentiment that if one were to eavesdrop at their tables for a month, one would be able to anticipate all of the bankruptcies, weddings, and wars of the year to come. [...] <br>
+For however decisive the Bolsheviks&rsquo; victory had been over the privileged classes on behalf of the Proletariat, they would be having banquets soon enough. Perhaps there would not be as many as there had been under the Romanovs&mdash;no autumn dances or diamond jubilees&mdash;but they were bound to celebrate something, whether the centennial of Das Kapital or the silver anniversary of Lenin&rsquo;s beard. Guest lists would be drawn up and shortened. Invitations would be engraved and delivered. Then, having gathered around a grand circle of tables, the new statesmen would nod their heads in order to indicate to a waiter (without interrupting the long-winded fellow on his feet) that, yes, they would have a few more spears of asparagus.<br>
+For pomp is a tenacious force. And a wily one too.&rdquo;</p>
+},
+
+{
+title: "A Natural History of Dragons",
+author: "Marie Brennan",
+link: "https://us.macmillan.com/series/theladytrentmemoirs",
+blurb: "A Victorian Age science fantasy series that chronicle the adventures of Lady Trent, the renowned dragon naturalist whose study of the legendary creatures have taken her around the world on thrilling expeditions.",
+firstPage: "<p>Not a day goes by that the post does not bring me at least one letter from a young person (or sometimes one not so young) who wishes to follow in my footsteps and become a dragon naturalist. Nowadays, of course, the field is quite respectable, with university courses and intellectual societies putting out fat volumes titled Proceedings of some meeting or other. Those interested in respectable things, however, attend my lectures. The ones who write to me invariably want to hear about my adventures: my escape from captivity in the swamps of Mouleen, or my role in the great Battle of Keonga, or (most frequently) my flight to the inhospitable heights of the Mrtyahaima peaks, the only place on earth where the secrets of dragonkind could be unlocked. <br>
+Even the most dedicated of letter-writers could not hope to answer all these queries personally. I have therefore accepted the offer from Messrs. Carrigdon &amp; Rudge to publish a series of memoirs chronicling the more interesting portions of my life. By and large these shall focus on those expeditions which led to the discovery for which I have become so famous, but there shall also be occasional digressions into matters more entertaining, personal, or even (yes) salacious. One benefit of being an old woman now, and moreover one who has been called a &ldquo;national treasure,&rdquo; is that there are very few who can tell me what I may and may not write.<br>
+Be warned, then: the collected volumes of this series will contain frozen mountains, foetid swamps, hostile foreigners, hostile fellow countrymen, the occasional hostile family member, bad decisions, misadventures in orienteering, diseases of an unromantic sort, and a plenitude of mud. You continue at your own risk. It is not for the faint of heart&mdash;no more so than the study of dragons itself. But such study offers rewards beyond compare: to stand in a dragon&rsquo;s presence, even for the briefest of moments&mdash;even at the risk of one&rsquo;s life&mdash;is a delight that, once experienced, can never be forgotten. If my humble words convey even a fraction of that wonder, I will rest content.<br>
+We must, of course, begin at the beginning, before the series of discoveries and innovations that transformed the world into the one you, dear reader, know so well. In this ancient and nearly forgotten age lie the modest origins of my immodest career: my childhood and my first foreign expedition, to the mountains of Vystrana. The basic facts of this expedition have long since become common knowledge, but there is much more to the tale than you have heard.</p>
+
+<p>Isabella, Lady Trent<br>
+Casselthwaite, Linshire<br>
+11 Floris, 5658</p>"
+},
+    
+  ];
+
+  // Define function to display a book on the main screen
+  function displayBook(book) {
+    bookPage.textContent = book.firstPage;
+    revealButton.textContent = "Reveal Book";
+  }
+
+  function displayBookInfo(book) {
+   bookPage.innerHTML = "<h1>" + book.title + "</h1><p>By " + book.author + "</p><p>" + book.blurb + "</p><p><a href='" + book.link + "'>Get the book</a></p>";
+   
+  }
+
+let usedBooks = [];
+
+
+function getRandomBook() {
+  
+  if (usedBooks.length === books.length) {
+   
+    
+     const message = document.createElement('p');
+    message.textContent = "That's all folks";
+    message.style.textAlign = 'center';
+  
+    message.style.top = '900';
+    message.style.left = '0';
+    message.style.fontSize = '18px';
+    message.style.width = '100%';
+    
+    const bookPage = document.getElementById('book-page');
+    bookPage.parentNode.insertBefore(message, bookPage);
+   revealButton.style.backgroundColor = "transparent";
+    return 'Thats all the books!';
+  }
+
+  let randomIndex;
+  do {
+    randomIndex = Math.floor(Math.random() * books.length);
+  } while (usedBooks.includes(randomIndex));
+  
+ 
+  usedBooks.push(randomIndex);
+  
+
+  return books[randomIndex];
+}
+
+
+
+  var currentBook = getRandomBook();
+  displayBook(currentBook);
+
+ 
+  revealButton.addEventListener("click", function() {
+    displayBookInfo(currentBook);
+    revealButton.style.visibility = 'hidden';
+   
+  });
+  
+
+
+  nextButton.addEventListener("click", function() {
+    currentBook = getRandomBook();
+    revealButton.style.visibility = 'visible';
+  
+    displayBook(currentBook);
+  });
+  
+  
+document.addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    currentBook = getRandomBook();
+    revealButton.style.visibility = "visible";
+    displayBook(currentBook);
+  } else if (event.key === " ") {
+    event.preventDefault();
+    if (revealButton.style.visibility === "hidden") {
+      window.open(currentBook.link, "_blank");
+    } else {
+      displayBookInfo(currentBook);
+      revealButton.style.visibility = "hidden";
+    }
+  }
+});
+
+
+nextButton.addEventListener("click", function() {
+  currentBook = getRandomBook();
+  revealButton.style.visibility = "visible";
+  displayBook(currentBook);
+  nextButton.blur();
+});
+
+  
+}
+    
+    </script>
+    
+    
   </body>
 </html>
