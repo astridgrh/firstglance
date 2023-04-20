@@ -61,20 +61,17 @@ button {
 	border: none;
 	cursor: pointer; 
 	/*font-family: 'Veranda', serif;*/
-	
+
 }
 
 button:focus {
   outline: none;
 }
 
-
 button:hover {
   background-color: #0069d9;
   outline: none;
 }
-
-
 
 /* unvisited link */
  a:link { color: red;}
@@ -203,16 +200,7 @@ function getRandomBook() {
     //^ sister line  revealButton.style.visibility = 'visible';
   });
   
-
-  // Event listener for next button
-  nextButton.addEventListener("click", function() {
-    currentBook = getRandomBook();
-    revealButton.style.visibility = 'visible';
-    //^ sister line  revealButton.style.visibility = 'hidden';
-    displayBook(currentBook);
-  });
-  
-    // Event listener for keyboard inputs
+  // Event listener for keyboard inputs
 document.addEventListener("keydown", function(event) {
   if (event.key === "Enter") {
     event.preventDefault();
@@ -229,18 +217,15 @@ document.addEventListener("keydown", function(event) {
     }
   }
 });
+  
 
-// Event listener for next button
-nextButton.addEventListener("click", function() {
-  currentBook = getRandomBook();
-  revealButton.style.visibility = "visible";
-  displayBook(currentBook);
-  nextButton.blur();
-});
-
-  
-  
-  
+  // Event listener for next button
+  nextButton.addEventListener("click", function() {
+    currentBook = getRandomBook();
+    revealButton.style.visibility = 'visible';
+    //^ sister line  revealButton.style.visibility = 'hidden';
+    displayBook(currentBook);
+  });
 }
     
     </script>
