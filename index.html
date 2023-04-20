@@ -142,16 +142,8 @@ firstPage: "Call me Ishmael. Some years ago—never mind how long precisely—ha
   // Define function to display book information
   function displayBookInfo(book) {
    bookPage.innerHTML = "<h1>" + book.title + "</h1><p>By " + book.author + "</p><p>" + book.blurb + "</p><p><a href='" + book.link + "'>Get the book</a></p>";
-    //revealButton.textContent = "---->";
-    //revealButton.style.backgroundColor = "white";
-    //^ if removed, also remove "revealButton.style.backgroundColor = "#2ecc71"; from displayBook"
+   
   }
-
-  // Define function to get a random book from the array
-  /*function getRandomBook() {
-    var randomIndex = Math.floor(Math.random() * books.length);
-    return books[randomIndex];
-  }*/
 
 
 
@@ -173,26 +165,11 @@ function getRandomBook() {
     message.style.fontSize = '18px';
     message.style.width = '100%';
     
-    document.body.insertBefore(message, document.body.firstChild);
+    //document.body.insertBefore(message, document.body.firstChild);
     
-    
-    /*
-    const message = document.createElement('p');
-    message.textContent = "That's all folks - if you would like more, please ";
-    message.style.textAlign = 'center';
-    message.style.position = 'absolute';
-    message.style.top = '400px'; // Use "px" units for top and left positions
-    message.style.left = '0';
-    message.style.fontSize = '18px';
-    message.style.width = '100%';
-
-    const link = document.createElement('a');
-    link.textContent = 'visit this page';
-    link.href = 'https://www.example.com/'; // Replace with the actual URL of the new page
-    message.appendChild(link); // Add the link element as a child of the message element
-
-    document.body.insertBefore(message, document.body.firstChild);
-    */
+    const bookPage = document.getElementById('button-container');
+    bookPage.parentNode.insertBefore(message, bookPage);
+    return 'That\'s all the books!';
     
     
     
