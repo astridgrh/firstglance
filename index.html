@@ -61,16 +61,17 @@ button {
 	border: none;
 	cursor: pointer; 
 	/*font-family: 'Veranda', serif;*/
-	
 
-	
+}
+
+button:focus {
+  outline: none;
 }
 
 button:hover {
   background-color: #0069d9;
+  outline: none;
 }
-
-
 
 /* unvisited link */
  a:link { color: red;}
@@ -167,12 +168,10 @@ function getRandomBook() {
     
     //document.body.insertBefore(message, document.body.firstChild);
     
-    const bookPage = document.getElementById('button-container');
+    const bookPage = document.getElementById('book-page');
     bookPage.parentNode.insertBefore(message, bookPage);
-    return 'That\'s all the books!';
-    
-    
-    
+   revealButton.style.visibility = 'hidden';
+   revealButton.style.backgroundColor = "transparent";
     return 'Thats all the books!';
   }
   
@@ -190,22 +189,6 @@ function getRandomBook() {
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   // Display a random book on page load
   var currentBook = getRandomBook();
   displayBook(currentBook);
@@ -217,10 +200,6 @@ function getRandomBook() {
     //^ sister line  revealButton.style.visibility = 'visible';
   });
   
-  // Event listener for reveal text
-  //revealWritButton.addEventListener("click", function() {
-    //displayBook(currentBook);
-  //});
 
   // Event listener for next button
   nextButton.addEventListener("click", function() {
